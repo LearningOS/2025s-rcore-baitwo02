@@ -1,6 +1,6 @@
-= Chapter 3
+# Chapter 3
 
-== 简单总结
+## 简单总结
 
 1. 对于`_trace_request`为0，将`_id`转换为`*const u8`的指针，然后直接获取改地址的值，并转换为`isize`返回。
 
@@ -8,11 +8,11 @@
 
 3. 对于`_trace_request`为2，在`task.rs`中为`TaskControlBlock`添加一个`task_syscall_record`数组，用于维护`task`的系统调用记录。并且为`task`实现`record_syscall_times`和`get_syscall_times`。前者用于调用时让`task_syscall_record[syscall_id] += 1`，并且在每次`syscall`前调用；后者用于获取`task_syscall_record[syscall_id]`的值，并且在`_trace_request`等于2时调用。
 
-== 浅浅记录一下坑:
+## 浅浅记录一下坑:
 
 对于`task/task.rs`中, `TaskControlBlock.syscall_times`需要是`[u32; MAX_SYSCALL_ID]`, 不能是`[usize; MAX_SYSCALL_ID]`
 
-== 简答作业
+## 简答作业
 
 1. 正确进入 U 态后，程序的特征还应有：使用 S 态特权指令，访问 S 态寄存器后会报错。 请同学们可以自行测试这些内容（运行 三个 bad 测例 (ch2b_bad_*.rs) ）， 描述程序出错行为，同时注意注明你使用的 sbi 及其版本。
 
@@ -76,7 +76,7 @@ csrrw sp, sscratch, sp
 
 > 通过系统调用 `syscall` 触发，系统调用是由 `ecall` 指令完成。
 
-== 荣誉准则
+## 荣誉准则
 
 1. 在完成本次实验的过程（含此前学习的过程）中，我曾分别与以下各位就（与本次实验相关的）以下方面做过交流，还在代码中对应的位置以注释形式记录了具体的交流对象及内容：
 > 无
